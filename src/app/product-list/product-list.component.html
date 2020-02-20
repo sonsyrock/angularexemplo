@@ -1,0 +1,28 @@
+<h2>Produtos</h2>
+
+<div *ngFor = "let product of products"> <!-- o *ngFor é usado para multiplicar div, uma nova div será criada,
+removida, ou alterada a cada vez que um produto novo for adicionado-->
+
+  <h3>
+    <a [title] ="product.name + 'details'"> <!-- title aqui é uma ligação de propriedade-->
+    {{product.name}}
+    </a>
+  </h3>
+<p *ngIf="product.description"> <!-- o *ngIf cria um elemento apenas se o produto atual tiver uma descrição(condição true)-->
+    Descrição: {{product.description}} <!--interpolação renderiza o valor de uma propriedade como texto-->
+</p>
+<button (click)="Compartilhar()">
+  Compartilhar
+</button>
+
+<app-product-alerts [product]="product"(notify)="onNotify()"><!-- onNotify foi criado no componente product-list-component.ts -->
+    
+  </app-product-alerts> <!--Aqui estamos puxando o componente app-product-alerts para a view-->
+
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
